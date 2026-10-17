@@ -1,0 +1,554 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Newton's Academy | Mulund West</title>
+<meta name="description" content="Newton's Academy, Mulund West. Explore JEE, NEET, MHT-CET, Science and Foundation coaching.">
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --navy: #102b3d;
+  --deep: #081c29;
+  --gold: #e8bb65;
+  --cream: #f7f6f1;
+  --white: #fffefa;
+  --muted: #687780;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; scroll-padding-top:85px; }
+body { font-family:'DM Sans',sans-serif; color:#192e3a; background:var(--white); line-height:1.7; }
+a { text-decoration:none; color:inherit; }
+button,input,select,textarea { font:inherit; }
+.container { width:min(1160px,90%); margin:auto; }
+img { width:100%; display:block; object-fit:cover; }
+
+.topbar {
+  background:var(--deep); color:#dbe2e5; padding:8px 0;
+  font-size:11px;
+}
+.topbar .container { display:flex; justify-content:space-between; gap:12px; }
+
+header {
+  position:sticky; top:0; z-index:100;
+  background:rgba(255,254,250,.97);
+  border-bottom:1px solid #e9e8e2;
+  backdrop-filter:blur(12px);
+}
+nav { min-height:78px; display:flex; align-items:center; justify-content:space-between; gap:25px; }
+.logo { display:flex; align-items:center; gap:11px; color:var(--navy); }
+.logo-icon {
+  background:var(--navy); color:white; width:44px; height:44px;
+  display:grid; place-items:center; border-radius:12px 12px 12px 3px;
+  font-size:26px; font-weight:800;
+}
+.logo-icon span { color:var(--gold); }
+.logo-text strong { display:block; font-size:15px; letter-spacing:2px; line-height:1.3; }
+.logo-text small { display:block; font-size:9px; letter-spacing:4px; }
+.navlinks { display:flex; align-items:center; gap:25px; font-size:12px; font-weight:700; }
+.navlinks a:hover { color:#a87925; }
+.nav-cta { background:var(--navy); color:white!important; padding:12px 17px; border-radius:4px; }
+.menu { display:none; border:0; background:none; font-size:26px; cursor:pointer; color:var(--navy); }
+
+.hero {
+  background:var(--navy); color:white; position:relative; overflow:hidden;
+}
+.hero:before {
+  content:""; position:absolute; width:550px; height:550px;
+  border:1px solid #ffffff12; border-radius:50%;
+  right:-150px; top:-220px; box-shadow:0 0 0 65px #ffffff08,0 0 0 130px #ffffff05;
+}
+.hero-grid {
+  position:absolute; inset:0; opacity:.12;
+  background-image:linear-gradient(#fff2 1px,transparent 1px),linear-gradient(90deg,#fff2 1px,transparent 1px);
+  background-size:55px 55px;
+}
+.hero-content {
+  position:relative; display:grid; grid-template-columns:1fr 1fr;
+  align-items:center; gap:65px; padding:85px 0 95px;
+}
+.eyebrow { color:#b68b3e; font-size:10px; font-weight:700; letter-spacing:3px; margin-bottom:17px; }
+.hero .eyebrow { color:var(--gold); }
+h1,h2,h3 { font-family:'Manrope',sans-serif; line-height:1.2; }
+h1 { font-size:clamp(40px,5vw,65px); letter-spacing:-3px; }
+h1 em,h2 em { font-style:normal; color:var(--gold); }
+.hero p { color:#c6d1d7; margin-top:22px; font-size:14px; max-width:490px; }
+.buttons { display:flex; gap:12px; flex-wrap:wrap; margin-top:30px; }
+.btn {
+  display:inline-flex; align-items:center; justify-content:center; gap:18px;
+  padding:13px 19px; border:1px solid transparent; border-radius:4px;
+  font-size:12px; font-weight:700; cursor:pointer; transition:.25s;
+}
+.btn:hover { transform:translateY(-3px); }
+.btn-gold { background:var(--gold); color:var(--deep); }
+.btn-outline { border-color:#ffffff55; color:white; }
+.btn-dark { background:var(--navy); color:white; }
+.hero-photo { position:relative; padding:12px 20px 12px 0; }
+.hero-photo img { height:420px; border-radius:180px 180px 8px 8px; }
+.photo-label {
+  position:absolute; bottom:28px; left:20px; right:0;
+  padding:18px; background:#102b3dd9; color:white;
+  backdrop-filter:blur(8px); font-size:12px;
+}
+.photo-label small { display:block; color:#d0dce1; }
+.floating {
+  position:absolute; background:white; color:var(--navy);
+  padding:13px 16px; border-radius:5px;
+  box-shadow:0 12px 35px #0003; font-size:11px; font-weight:700;
+}
+.float-one { top:65px; left:-25px; }
+.float-two { bottom:70px; right:-5px; }
+.hero-bottom { height:4px; background:var(--gold); width:30%; }
+
+.facts { padding:26px 0; border-bottom:1px solid #e8e8e1; }
+.fact-grid { display:grid; grid-template-columns:repeat(4,1fr); }
+.fact { padding:8px 20px; border-right:1px solid #e8e8e1; }
+.fact:first-child { padding-left:0; }
+.fact:last-child { border:0; }
+.fact strong { display:block; font-size:12px; color:var(--navy); }
+.fact small { color:var(--muted); font-size:10px; }
+
+section { scroll-margin-top:85px; }
+.section { padding:95px 0; }
+.about { background:var(--cream); }
+.about-grid { display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:75px; }
+.about-photo { position:relative; }
+.about-photo img { height:470px; border-radius:5px 100px 5px 5px; }
+.photo-note { position:absolute; bottom:-20px; right:-10px; background:white; padding:18px 22px; box-shadow:0 10px 35px #102b3d18; font-size:12px; font-weight:700; }
+.photo-note small { display:block; font-weight:400; color:var(--muted); }
+h2 { font-size:clamp(33px,4vw,48px); letter-spacing:-2px; color:var(--navy); }
+.about p,.approach p,.section-intro { color:var(--muted); font-size:13px; margin-top:18px; }
+.points { margin-top:24px; display:grid; gap:16px; }
+.point { display:flex; align-items:flex-start; gap:12px; font-size:12px; }
+.check { color:#9c742f; background:#eee5d2; width:23px; height:23px; border-radius:50%; display:grid; place-items:center; flex-shrink:0; }
+.point strong { display:block; color:var(--navy); }
+.point small { color:var(--muted); font-size:11px; }
+
+.courses { background:var(--white); }
+.heading-row { display:flex; justify-content:space-between; align-items:end; gap:35px; margin-bottom:38px; }
+.heading-row p { max-width:360px; color:var(--muted); font-size:13px; }
+.course-grid { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid #e7e7e1; border-left:1px solid #e7e7e1; }
+.course { padding:27px; min-height:245px; border-right:1px solid #e7e7e1; border-bottom:1px solid #e7e7e1; transition:.25s; display:flex; flex-direction:column; }
+.course:hover { background:#f8f4e9; transform:translateY(-3px); }
+.course.featured { background:var(--navy); color:white; }
+.course-icon { width:43px; height:43px; display:grid; place-items:center; border:1px solid #e2d6bd; color:#a67c30; border-radius:50%; font-size:22px; margin-bottom:20px; }
+.course small { color:#a57d34; font-size:9px; letter-spacing:2px; font-weight:700; }
+.course h3 { margin-top:9px; font-size:17px; }
+.course p { font-size:11px; color:var(--muted); margin-top:10px; }
+.course.featured p { color:#c3d0d7; }
+.course-bottom { margin-top:auto; padding-top:22px; display:flex; justify-content:space-between; color:#9c762f; font-size:11px; }
+.course-footer { display:flex; justify-content:space-between; align-items:center; gap:15px; margin-top:25px; font-size:12px; color:var(--muted); }
+
+.approach { background:var(--navy); color:white; }
+.approach-grid { display:grid; grid-template-columns:1fr 1fr; gap:75px; align-items:center; }
+.approach h2 { color:white; }
+.steps { margin:28px 0; border-top:1px solid #ffffff25; }
+.step { display:flex; gap:20px; padding:18px 0; border-bottom:1px solid #ffffff25; }
+.step-number { color:var(--gold); font-weight:800; }
+.step strong { font-size:13px; }
+.step p { margin-top:4px; font-size:11px; }
+.approach-photo { position:relative; }
+.approach-photo img { height:460px; border-radius:5px 5px 90px 5px; }
+.quote {
+  position:absolute; bottom:-20px; left:-20px; background:var(--gold);
+  color:var(--navy); padding:20px 23px; width:80%; font-weight:700;
+  font-family:'Manrope',sans-serif; font-size:14px;
+}
+
+.stories { background:var(--cream); }
+.story-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:17px; margin-top:35px; }
+.story { background:white; padding:26px; border:1px solid #eae8e0; }
+.story.dark { background:var(--navy); color:white; }
+.quote-mark { color:#bb9146; font-size:42px; line-height:1; }
+.story p { font-size:13px; margin:15px 0 23px; }
+.story small { color:var(--muted); font-size:10px; }
+.story.dark small { color:#c4d0d7; }
+.disclaimer { font-size:10px; color:var(--muted); margin-top:15px; }
+
+.contact { background:var(--deep); color:white; }
+.contact-grid { display:grid; grid-template-columns:.9fr 1fr; gap:75px; align-items:start; }
+.contact h2 { color:white; }
+.contact-copy > p { color:#c3cfd5; font-size:13px; margin-top:20px; }
+.contact-detail { display:flex; gap:14px; margin-top:25px; font-size:12px; }
+.contact-detail span { color:var(--gold); font-size:20px; }
+.contact-detail small { display:block; color:var(--gold); font-size:9px; letter-spacing:2px; }
+.form { background:white; color:var(--navy); padding:32px; border-radius:5px; }
+.form h3 { font-size:24px; margin-top:5px; }
+.form > p { font-size:11px; color:var(--muted); margin:7px 0 22px; }
+.form label { display:block; font-size:10px; font-weight:700; margin-bottom:5px; }
+.form input,.form select,.form textarea {
+  width:100%; border:1px solid #e0e5e4; border-radius:3px;
+  padding:12px; margin-bottom:15px; outline:none; background:#fcfcfa; font-size:11px;
+}
+.form input:focus,.form select:focus,.form textarea:focus { border-color:#b68b3e; }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.form button { width:100%; border:0; }
+.form-note { text-align:center; color:var(--muted); font-size:9px; margin-top:12px; }
+#status { font-size:11px; color:#26704a; margin-top:10px; }
+
+footer { background:#061620; color:#9aabb4; padding:27px 0; font-size:10px; }
+.footer-row { display:flex; align-items:center; justify-content:space-between; gap:20px; }
+footer .logo { color:white; }
+footer a { color:var(--gold); }
+
+.whatsapp {
+  position:fixed; right:20px; bottom:20px; z-index:90;
+  width:52px; height:52px; border-radius:50%; background:#20b66b;
+  color:white; display:grid; place-items:center; font-size:25px;
+  box-shadow:0 8px 25px #0003;
+}
+@media(max-width:900px) {
+  .navlinks { gap:13px; font-size:11px; }
+  .hero-content { gap:35px; }
+  .about-grid,.approach-grid,.contact-grid { gap:40px; }
+  .fact { padding:8px 12px; }
+}
+@media(max-width:760px) {
+  .topbar .container { justify-content:center; }
+  .topbar .container span:first-child { display:none; }
+  .menu { display:block; }
+  .navlinks {
+    display:none; position:absolute; top:78px; left:0; right:0;
+    background:var(--white); padding:20px 5%;
+    flex-direction:column; align-items:stretch; gap:0;
+    box-shadow:0 15px 25px #0001;
+  }
+  .navlinks.show { display:flex; }
+  .navlinks a { padding:11px 0; }
+  .navlinks .nav-cta { text-align:center; padding:12px; margin-top:8px; }
+  .hero-content,.about-grid,.approach-grid,.contact-grid { grid-template-columns:1fr; }
+  .hero-content { padding:65px 0 75px; gap:40px; }
+  .hero-photo { width:min(520px,100%); margin:auto; }
+  .hero-photo img { height:370px; }
+  .fact-grid { grid-template-columns:1fr 1fr; gap:18px 0; }
+  .fact:nth-child(2) { border:0; }
+  .fact:nth-child(3) { padding-left:0; }
+  .section { padding:70px 0; }
+  .about-photo { max-width:550px; width:95%; margin:auto; }
+  .about-photo img { height:380px; }
+  .heading-row { display:block; }
+  .heading-row p { margin-top:15px; }
+  .course-grid { grid-template-columns:1fr 1fr; }
+  .approach-photo { width:95%; max-width:550px; margin:10px auto 20px; }
+  .story-grid { grid-template-columns:1fr; }
+  .contact-grid { gap:35px; }
+}
+@media(max-width:480px) {
+  .container { width:90%; }
+  .topbar { font-size:10px; }
+  .hero h1 { font-size:44px; }
+  .hero-photo img { height:315px; }
+  .floating { font-size:10px; padding:10px; }
+  .float-one { left:-5px; }
+  .float-two { right:-5px; }
+  .fact { padding:5px 8px; }
+  .fact strong { font-size:10px; }
+  .fact small { font-size:9px; }
+  h2 { font-size:35px; }
+  .course-grid { grid-template-columns:1fr; }
+  .course { min-height:215px; }
+  .course-footer { flex-direction:column; align-items:flex-start; }
+  .about-photo img { height:320px; }
+  .approach-photo img { height:340px; }
+  .quote { left:-5px; width:88%; font-size:12px; }
+  .form { padding:23px 17px; }
+  .form-row { grid-template-columns:1fr; gap:0; }
+  .footer-row { flex-direction:column; align-items:flex-start; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+  <div class="container">
+    <span>📍 Mulund West, Mumbai</span>
+    <span>☎ 73042 34055 &nbsp; | &nbsp; Admissions Enquiry</span>
+  </div>
+</div>
+
+<header>
+  <nav class="container">
+    <a href="#home" class="logo">
+      <div class="logo-icon">N<span>.</span></div>
+      <div class="logo-text"><strong>NEWTON'S</strong><small>ACADEMY</small></div>
+    </a>
+
+    <button class="menu" id="menu" aria-label="Toggle menu">☰</button>
+
+    <div class="navlinks" id="navlinks">
+      <a href="#home">Home</a>
+      <a href="#about">About Us</a>
+      <a href="#courses">Courses</a>
+      <a href="#approach">Our Approach</a>
+      <a href="#contact" class="nav-cta">Enquire Now ↗</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="hero-grid"></div>
+  <div class="container hero-content">
+    <div>
+      <div class="eyebrow">YOUR NEXT CHAPTER STARTS HERE</div>
+      <h1>Big dreams.<br><em>Stronger</em><br>foundations.</h1>
+      <p>Build confidence, master concepts and prepare for the future you imagine — with the right guidance at every step.</p>
+      <div class="buttons">
+        <a href="#courses" class="btn btn-gold">Explore Courses ↗</a>
+        <a href="#about" class="btn btn-outline">Discover Newton's →</a>
+      </div>
+      <p style="font-size:11px;margin-top:32px;color:#d4dfe4">✦ Concept clarity &nbsp; ✦ Structured practice &nbsp; ✦ Personal guidance</p>
+    </div>
+
+    <div class="hero-photo">
+      <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1000&q=85" alt="Students studying together">
+      <div class="photo-label"><strong>Learn with purpose.</strong><small>One step at a time.</small></div>
+      <div class="floating float-one">✎ &nbsp; Concept first</div>
+      <div class="floating float-two">↗ &nbsp; Your goals, our focus</div>
+    </div>
+  </div>
+  <div class="hero-bottom"></div>
+</section>
+
+<section class="facts">
+  <div class="container fact-grid">
+    <div class="fact"><strong>01 · Concept clarity</strong><small>Understand the why</small></div>
+    <div class="fact"><strong>02 · Regular practice</strong><small>Learn, solve, improve</small></div>
+    <div class="fact"><strong>03 · Progress tracking</strong><small>Keep moving forward</small></div>
+    <div class="fact"><strong>04 · Student support</strong><small>Guidance that matters</small></div>
+  </div>
+</section>
+
+<section class="section about" id="about">
+  <div class="container about-grid">
+    <div class="about-photo">
+      <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=1000&q=85" alt="Students in a learning environment">
+      <div class="photo-note">Curiosity creates progress.<small>Build habits that last.</small></div>
+    </div>
+
+    <div>
+      <div class="eyebrow">WELCOME TO NEWTON'S ACADEMY</div>
+      <h2>More than classes.<br>A place to <em>grow.</em></h2>
+      <p>Every student has potential. The right teaching, steady practice and a supportive environment can help turn that potential into progress.</p>
+      <p>At Newton's Academy, students work towards stronger concepts, better study habits and greater confidence. Your learning journey deserves a clear plan.</p>
+
+      <div class="points">
+        <div class="point"><span class="check">✓</span><div><strong>Clear concepts</strong><small>Build understanding from the basics.</small></div></div>
+        <div class="point"><span class="check">✓</span><div><strong>Consistent practice</strong><small>Improve through revision and tests.</small></div></div>
+        <div class="point"><span class="check">✓</span><div><strong>Guided preparation</strong><small>Work towards your academic goals.</small></div></div>
+      </div>
+      <div class="buttons"><a href="#approach" class="btn btn-dark">Our Teaching Approach →</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="section courses" id="courses">
+  <div class="container">
+    <div class="heading-row">
+      <div><div class="eyebrow">FIND YOUR LEARNING PATH</div><h2>Courses for your<br><em>next step.</em></h2></div>
+      <p>Choose a path that matches your class, interests and ambitions. Contact our team to learn which programme suits your goals.</p>
+    </div>
+
+    <div class="course-grid">
+      <article class="course featured">
+        <div class="course-icon">⌬</div><small>ENGINEERING ENTRANCE</small>
+        <h3>JEE Main & Advanced</h3>
+        <p>Build strong Physics, Chemistry and Mathematics concepts with focused problem-solving practice.</p>
+        <div class="course-bottom"><span>Class XI–XII</span><span>↗</span></div>
+      </article>
+
+      <article class="course">
+        <div class="course-icon">＋</div><small>MEDICAL ENTRANCE</small>
+        <h3>NEET</h3>
+        <p>Prepare for medical entrance through structured learning, subject practice and revision.</p>
+        <div class="course-bottom"><span>Class XI–XII</span><span>↗</span></div>
+      </article>
+
+      <article class="course">
+        <div class="course-icon">◈</div><small>STATE ENTRANCE</small>
+        <h3>MHT-CET</h3>
+        <p>Strengthen concepts and practise exam-style questions for entrance preparation.</p>
+        <div class="course-bottom"><span>Class XI–XII</span><span>↗</span></div>
+      </article>
+
+      <article class="course">
+        <div class="course-icon">∑</div><small>BOARD PREPARATION</small>
+        <h3>Science · XI & XII</h3>
+        <p>Prepare for HSC Science with clear explanations, regular practice and revision.</p>
+        <div class="course-bottom"><span>HSC Board</span><span>↗</span></div>
+      </article>
+
+      <article class="course">
+        <div class="course-icon">✧</div><small>BUILD YOUR BASE</small>
+        <h3>Foundation</h3>
+        <p>Develop strong Mathematics and Science fundamentals for Classes 8, 9 and 10.</p>
+        <div class="course-bottom"><span>Class VIII–X</span><span>↗</span></div>
+      </article>
+
+      <article class="course">
+        <div class="course-icon">▦</div><small>SCHOOL SUPPORT</small>
+        <h3>School Section</h3>
+        <p>Explore academic support for school learning across available board programmes.</p>
+        <div class="course-bottom"><span>Ask about batches</span><span>↗</span></div>
+      </article>
+    </div>
+
+    <div class="course-footer">
+      <span>Not sure which course is right for you?</span>
+      <a href="#contact" class="btn btn-dark">Talk to our team ↗</a>
+    </div>
+  </div>
+</section>
+
+<section class="section approach" id="approach">
+  <div class="container approach-grid">
+    <div>
+      <div class="eyebrow">THE NEWTON'S APPROACH</div>
+      <h2>Small steps.<br><em>Real progress.</em></h2>
+      <p>Good preparation is not about studying all day. It is about understanding what you learn, practising with purpose and improving one topic at a time.</p>
+
+      <div class="steps">
+        <div class="step"><span class="step-number">01</span><div><strong>Understand</strong><p>Start with the basics and make concepts clear.</p></div></div>
+        <div class="step"><span class="step-number">02</span><div><strong>Practise</strong><p>Apply what you learn through questions and revision.</p></div></div>
+        <div class="step"><span class="step-number">03</span><div><strong>Improve</strong><p>Use tests and feedback to identify your next step.</p></div></div>
+      </div>
+      <a href="#contact" class="btn btn-gold">Plan Your Learning Journey ↗</a>
+    </div>
+
+    <div class="approach-photo">
+      <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1000&q=85" alt="Study notes and books on a desk">
+      <div class="quote">“Understand. Practise. Improve. Keep going.”</div>
+    </div>
+  </div>
+</section>
+
+<section class="section stories">
+  <div class="container">
+    <div class="eyebrow">A POSITIVE LEARNING MINDSET</div>
+    <h2>Every achievement<br>starts with <em>effort.</em></h2>
+
+    <div class="story-grid">
+      <article class="story"><div class="quote-mark">“</div><p>Keep asking questions, practise regularly and learn from every challenge.</p><strong>Learn with curiosity</strong><br><small>Student mindset</small></article>
+      <article class="story dark"><div class="quote-mark">“</div><p>Small improvements every day can build confidence for bigger goals.</p><strong>Progress over perfection</strong><br><small>Growth mindset</small></article>
+      <article class="story"><div class="quote-mark">“</div><p>A clear plan and consistent practice can make challenging subjects feel manageable.</p><strong>One step at a time</strong><br><small>Learning journey</small></article>
+    </div>
+    <p class="disclaimer">These are illustrative learning messages, not verified student testimonials or exam results.</p>
+  </div>
+</section>
+
+<section class="section contact" id="contact">
+  <div class="container contact-grid">
+    <div class="contact-copy">
+      <div class="eyebrow">LET'S TALK ABOUT YOUR GOALS</div>
+      <h2>Your future deserves<br><em>a conversation.</em></h2>
+      <p>Tell us a little about yourself. Our team can help you explore course options and next steps.</p>
+
+      <div class="contact-detail">
+        <span>☎</span><div><small>CALL US</small><strong>73042 34055</strong></div>
+      </div>
+      <div class="contact-detail">
+        <span>⌖</span><div><small>VISIT THE ACADEMY</small><strong>1st Floor, Shrinivas Building,<br>Opp. Kothari Farsan, Zaver Road,<br>Mulund West, Mumbai – 400080</strong></div>
+      </div>
+      <div class="contact-detail">
+        <span>↗</span><div><small>OFFICIAL WEBSITE</small><strong><a href="https://newtonsacademy.com/" target="_blank" rel="noopener">newtonsacademy.com</a></strong></div>
+      </div>
+    </div>
+
+    <form class="form" id="enquiryForm">
+      <div class="eyebrow">ADMISSIONS ENQUIRY</div>
+      <h3>Let's get you started.</h3>
+      <p>Fill in your details to prepare an enquiry message.</p>
+
+      <label for="name">Full name</label>
+      <input id="name" name="name" type="text" placeholder="Enter your full name" required minlength="2">
+
+      <div class="form-row">
+        <div><label for="phone">Mobile number</label>
+        <input id="phone" name="phone" type="tel" placeholder="10-digit number" pattern="[6-9][0-9]{9}" required></div>
+        <div><label for="class">Your class</label>
+        <select id="class" name="class" required>
+          <option value="">Select class</option><option>Class 8</option><option>Class 9</option><option>Class 10</option><option>Class 11</option><option>Class 12</option><option>Other</option>
+        </select></div>
+      </div>
+
+      <label for="course">Course of interest</label>
+      <select id="course" name="course" required>
+        <option value="">Choose a course</option>
+        <option>JEE Main & Advanced</option><option>NEET</option><option>MHT-CET</option><option>Science XI & XII</option><option>Foundation VIII–X</option><option>School Section</option><option>Need guidance</option>
+      </select>
+
+      <label for="message">Message (optional)</label>
+      <textarea id="message" name="message" rows="3" placeholder="Tell us about your goals"></textarea>
+
+      <button class="btn btn-gold" type="submit">Prepare WhatsApp Enquiry ↗</button>
+      <div id="status" role="status" aria-live="polite"></div>
+      <div class="form-note">Your details are not stored by this demo website.</div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer-row">
+    <a href="#home" class="logo">
+      <div class="logo-icon">N<span>.</span></div>
+      <div class="logo-text"><strong>NEWTON'S</strong><small>ACADEMY</small></div>
+    </a>
+    <span>© <span id="year"></span> Newton's Academy · Mulund West, Mumbai</span>
+    <a href="#home">Back to top ↑</a>
+  </div>
+</footer>
+
+<a class="whatsapp" href="https://wa.me/917304234055" target="_blank" rel="noopener" aria-label="WhatsApp Newton's Academy">✆</a>
+
+<script>
+const menu = document.getElementById('menu');
+const navlinks = document.getElementById('navlinks');
+
+menu.addEventListener('click', () => {
+  navlinks.classList.toggle('show');
+  menu.textContent = navlinks.classList.contains('show') ? '✕' : '☰';
+});
+
+navlinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navlinks.classList.remove('show');
+    menu.textContent = '☰';
+  });
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+document.getElementById('enquiryForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  if (!this.reportValidity()) return;
+
+  const name = document.getElementById('name').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const studentClass = document.getElementById('class').value;
+  const course = document.getElementById('course').value;
+  const message = document.getElementById('message').value.trim();
+
+  const enquiry =
+    "Hello Newton's Academy, I would like to enquire about admissions.\n" +
+    "Name: " + name + "\n" +
+    "Mobile: " + phone + "\n" +
+    "Class: " + studentClass + "\n" +
+    "Course: " + course +
+    (message ? "\nMessage: " + message : "");
+
+  document.getElementById('status').textContent =
+    'Opening WhatsApp. Please review your message and press Send.';
+
+  const whatsappURL = 'https://wa.me/917304234055?text=' + encodeURIComponent(enquiry);
+  window.open(whatsappURL, '_blank', 'noopener,noreferrer');
+});
+</script>
+
+</body>
+</html>
